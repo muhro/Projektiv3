@@ -10,18 +10,23 @@
 <nav id="nav">
     <nav>
         <ul id="topnav" class="topnav">
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="#contact">CONTACT</a></li>
-            <li><a href="portfolio.html">PORTFOLIO</a></li>
+            <li><a class="hoverOver" href="index.html">HOME</a></li>
+            <li><a class="hoverOver" href="#contact">CONTACT</a></li>
+            <li id="drop" class="dropdown">
+                <a class="hoverOver" href="portfolio.html">PORTFOLIO</a>
+                <a class="dropdown-content" href="portfolio.html">MUSIC</a>
+                <a class="dropdown-content" href="portfolio.html">PHOTOS</a>
+                <a class="dropdown-content" href="portfolio.html">GENERAL</a>
+            </li>
         </ul>
     </nav>
     <nav>
         <ul>
             <li id="some">
-                <a href="https://www.instagram.com/ophietto/">
+                <a class="hoverOver" href="https://www.instagram.com/ophietto/">
                     <img class="someClass" src="css/Insta.png" alt="Instagram"></a>
 
-                <a href="https://soundcloud.com/ophsonics">
+                <a class="hoverOver" href="https://soundcloud.com/ophsonics">
                     <img class="someClass" src="css/Soundcloud.png" alt="SoundCloud"></a>
             </li>
         </ul>
@@ -44,7 +49,7 @@
         </audio>
         <h3 id="audioControl" class="pointer">Play</h3>
     </nav>
-</nav>
+</nav></nav>
 <div id="contact">
     <div id="wrapper" class="wrapper">
         <div id="sivuM"></div>
