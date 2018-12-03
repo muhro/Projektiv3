@@ -1,0 +1,186 @@
+::-webkit-scrollbar{
+    display: none;
+}
+body{
+    background-color: black;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    max-height: 100%;
+    font-family: Numans-Regular;
+    margin: 0; !important;
+
+}
+.port{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+
+}
+audio {
+    width: 5rem;
+    display: block;
+}
+@font-face {
+    font-family: Anton;
+    src: url(Anton.ttf);
+}
+@font-face {
+    font-family: Numans-Regular;
+    src: url(Numans-Regular.ttf);
+}
+h3{
+    font-family: Anton;
+    font-weight: lighter;
+
+}
+.tausta{
+    background: rgba(0, 0, 0, 0.0);
+    z-index: 1;
+    border-radius: 12px;
+
+}
+
+
+.kuva{
+    max-height: 10rem;
+    border-radius: 80px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+li a{
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+.center{
+    text-align: center;
+}
+
+
+.topnav {
+    overflow: hidden;
+    font-family: Anton;
+    z-index: 100;
+    position: fixed;
+    font-size: x-large;
+}
+
+.someClass{
+    max-height: 32px;
+
+}
+
+#some{
+    right: 0;
+    position: fixed;
+    z-index: 100;
+
+}
+.column{
+    float: right;
+}
+.column.side {
+    width: 100%;
+    color: #f1f1f1;
+    padding: 2rem;
+}
+
+.column.middle {
+    width: 40%;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 600px) {
+    .column.side, .column.middle {
+        width: 100%;
+    }
+}
+#wrapper{
+    text-align: center;
+
+}
+.wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.floating-menu {
+    font-family: sans-serif;
+    padding: 5px;;
+    width: 130px;
+    z-index: 100;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    font-size: x-large;
+}
+
+.floating-menu a,
+.floating-menu h3 {
+    font-size: 0.9em;
+    display: block;
+    margin: 0 0.5em;
+    color: white;
+}
+.pointer {
+    cursor: pointer;
+}
+p{
+    color: white;
+    font-family: Numans-Regular;
+}
+h2{
+    color: white;
+    font-family: Numans-Regular;
+}
+.background {
+    background: url(gram2.png) center no-repeat;
+    background-size: cover !important;
+    height: 566px;
+}
+
+.header {
+    color: white;
+    position: absolute;
+    top: 350px;
+    left: 50%;
+    margin-top: -37px;
+    margin-left: -285px;
+    font-size: 400%;
+    z-index: 100;
+}
+.nappi{
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    border: none;
+    text-align: center;
+    margin: 20px;
+
+}
