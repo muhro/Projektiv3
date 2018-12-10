@@ -7,51 +7,51 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body onload="resize()" onresize="resize()">
-<nav id="nav">
+<nav id="nav" class="effect3">
     <nav>
         <ul id="topnav" class="topnav">
             <li><a class="hoverOver" href="index.html">HOME</a></li>
             <li><a class="hoverOver" href="#contact">CONTACT</a></li>
             <li id="drop" class="dropdown">
                 <a class="hoverOver" href="portfolio.html">PORTFOLIO</a>
-                <a class="dropdown-content" href="portfolio.html">MUSIC</a>
-                <a class="dropdown-content" href="portfolio.html">PHOTOS</a>
-                <a class="dropdown-content" href="portfolio.html">GENERAL</a>
+                <a class="dropdown-content" href="portfolio.html#music">MUSIC</a>
+                <a class="dropdown-content" href="portfolio.html#photos">PHOTOS</a>
+                <a class="dropdown-content" href="portfolio.html#general">GENERAL</a>
             </li>
         </ul>
     </nav>
     <nav>
         <ul>
             <li id="some">
-                <a class="hoverOver" href="https://www.instagram.com/ophietto/">
-                    <img class="someClass" src="css/Insta.png" alt="Instagram"></a>
+                <a class="hoverOverSome" href="https://www.instagram.com/ophietto/">
+                    <img class="someClass effect4" src="css/Insta.png" alt="Instagram"></a>
 
-                <a class="hoverOver" href="https://soundcloud.com/ophsonics">
-                    <img class="someClass" src="css/Soundcloud.png" alt="SoundCloud"></a>
+                <a class="hoverOverSome" href="https://soundcloud.com/ophsonics">
+                    <img class="someClass effect4" src="css/Soundcloud.png" alt="SoundCloud"></a>
             </li>
         </ul>
     </nav>
 
     <div class="center">
-        <video width="100%" autoplay muted loop>
+        <video width="100%" autoplay muted loop class="effect1">
             <source src="css/glitch.webm" type="video/webm">
             <source src="css/glitch.webm" type="video/ogg">
             Your browser does not support HTML5 video.
         </video>
     </div>
 
-    <nav id="ambient" class="floating-menu">
-        <h3 >Ambient</h3>
+    <nav id="ambient" class="floating-menu effect3">
+        <h3>Ambient</h3>
         <audio id="audio" volume="0.5" loop>
             <source src="css/notfromhere.mp3" type="audio/ogg">
             <source src="css/notfromhere.mp3" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>
-        <h3 id="audioControl" class="pointer">Play</h3>
+        <h3 id="audioControl" class="pointer hoverOver">Play</h3>
     </nav>
-</nav></nav>
+</nav>
 <div id="contact">
-    <div id="wrapper" class="wrapper">
+    <div id="wrapper" class="wrapper effect2">
         <div id="sivuM"></div>
         <div class="column middle tausta">
             <h2>Main Content</h2>
@@ -67,10 +67,49 @@
                 placerat,
                 purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan
                 convallis.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus
+                venenatis
+                velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam
+                placerat,
+                purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan
+                convallis.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus
+                venenatis
+                velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam
+                placerat,
+                purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan
+                convallis.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus
+                venenatis
+                velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam
+                placerat,
+                purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan
+                convallis.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus
+                venenatis
+                velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam
+                placerat,
+                purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan
+                convallis.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus
+                venenatis
+                velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam
+                placerat,
+                purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan
+                convallis.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus
+                venenatis
+                velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam
+                placerat,
+                purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan
+                convallis.</p>
+        </div>
+        <div id="desktopDiv" class="flex">
+            <div class="divider effect1"></div>
         </div>
         <div id="sivu">
             <div class="column side">
-                <h2><img class="kuva" src="css/olli.jpg" alt="Instagram"></h2>
+                <h2><img id="result2"class="kuva effect1" src="css/olli.jpg" alt="Instagram"></h2>
                 <p>Foreign Mechanics</p>
                 <p> Audio / Visual</p>
                 <p> Sound artist</p>
@@ -82,4 +121,55 @@
 </div>
 </body>
 <script src="js/main.js"></script>
+<!--
+,,......,.,,/////#&@@@@@@@&@@&((###%%###((///,.. ..
+,,..,,//###%%&&&@&&&&%&&@&@@@&@&%#%&@@@@@@&##((/**,.  .
+**//(#%%&&&&@@@@@&@@&@&&%%%##########%%&@@@@@@@&&&&%###/,..
+#%%&&@@@@@@@@@@@@@&%%%%###((##(((##%%#%%&&@@@@@@@@@&%%%##/,.
+&&@@@@@@@@@@@&%%#(/,,......,...    ...,,(%@@@@@@@@@@@&%#(/,..
+@@@@@@@@&%##(*,.                           . ./#&@@@@@@@@@@&/
+@@@@@@&%(*,.                                   ...,#@@@@@@@@&&&
+@@@@/. .                                         .%@@@@@@&%
+@@(/,.                                               ,#@@@@@@
+%#(/,..                                                 ..#@@@@
+**,,,...                                                   ,&@@
+*,,.....                                                    ,%@
+,,,,.....                                                    ./
+//,....                                                     .
+/(///**,,,,/(((####%%##(/*.                . ..          .
+(((####/,,,,,,,,/(((######(.              .(######((/.. .
+(#%%%#/,,,,,//((##########(#(/..          .,////(#((##((///(*
+#%%%##(//#####%#%&@@@@@@@@&%###(/..     .,,(##%%%%%%(//*,,*
+(##((/(###%%#(*..(%@@@@@%%#%&%%###(/,    .(##%%#((%@@&&&&%##(/,
+*,/,/(##%#(,.    .,(//((#######/,,.   /###*   %&@@@@@@%#(
+,....,//((*,..  .,*/,.*/((((/*.    ,/((.    ./%##((&%%#
+.. .. .. ....,.,.,,,*,.,,.  .,//((/,     ..*/(/.....*,,/%#(
+..                           .,/((/,         ../,,.,,,*////
+,.    .                     ,//((###(/,.    .      ........,,.,
+,.                        .*//(#@@@@@%#(/(##(,.         ...
+,..                        ##(*(#%%(/#%&@%/.
+,.                         /###(((/,.  .,,//..
+,,.                      ..,//,,..  ...,,,,.
+,,.                     ,,,//**,..........
+/,.                ....,,,((((####((.
+*,.                 ../((/(##%&&@@@@@@/
+/,...             ...,/(###(///////(####%%#*.
+/,...           .....,*//((////////*,///,...
+/,..           ....,,,.,,,,,,,,,((/(*,,,,,,
+/*,........      ...,,.............,,.,/,...     ..,.
+//*,........     ....,,,...                      ..,...
+#(*,,.........  ....,,,...                      ..,.....     ..
+#/*,,..,,...... .........                        .,,..      ...
+((/*,,,,........ ....,,..                        ..     .....
+##(///*,,,.........,,**..                             .....
+%#((((//*,,,.....,/((#(//*,...             ...,.        ...,,
+%%%##((//*,,....,,//((%%####(,.      ...,,,//..      ....,/
+%%%%%#(((/,,.....,(##%&&@&&%###(//,/(((((/,.       ...*
+(###%%%##(/*,.....,(###%%%%%&%%%#######(##(/,.           .*
+/####%%#%##(//........,*//(//////////*,...           ...,,,
+*/((##%%%%%%#(/,.....                                 ..,,*
+(/*//((#%%%%###(//,.....                             ....,**,
+///*//(##%###((((/*,,,,..                        ..,,,,,,,.
+#(//(((///(((#(##(((((//*,,......  ..            ....,,,,,,,,
+-->
 </html>

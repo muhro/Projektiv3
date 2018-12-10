@@ -1,11 +1,20 @@
 'use strict';
 
-const yourAudio = document.getElementById('audio');
+const yourAudio = document.querySelector('#audio');
 const ctrl = document.getElementById('audioControl');
-const frm = document.querySelector('#mediaform');
-const updatefrm = document.querySelector('#updateform');
-const list = document.querySelector('#imagelist');
-document.getElementById("audio").volume = 0.2;
+const lomake = document.querySelector('#lomake');
+const lista = document.querySelector('#result');
+const lista2 = document.querySelector('#result2');
+
+try {
+  const musa = document.querySelector('#audioControl');
+
+  musa.volume = 0.2;
+
+  musa.addEventListener('click', audio);
+} catch (e) {
+
+}
 
 function audio() {
   const pause = ctrl.innerHTML === 'pause';
@@ -15,19 +24,72 @@ function audio() {
   yourAudio[method]();
   return false;
 };
-document.getElementById('audioControl').addEventListener('click', audio);
+
+const getImages = () => {
+  fetch('/images').then((response) => {
+    return response.json();
+  }).then((json) => {
+    console.log(json);
+    // clear list before adding upated data
+    lista.innerHTML = '';
+    json.forEach((image) => {
+      const li = document.createElement('li');
+      const img = document.createElement('img');
+      img.src = 'thumbs/' + image.p_mthumb;
+      img.addEventListener('click', () => {
+        fillUpdate(image);
+      });
+      li.appendChild(img);
+      lista.appendChild(li);
+    });
+  });
+};
+try{
+const lahetaLomake = (evt) => {
+  evt.preventDefault();
+  console.log('apuaaaaaa');
+  const fd = new FormData(lomake);
+  const asetukset = {
+    method: 'post',
+    body: fd,
+  };
+
+  fetch('/upload', asetukset).then((response) => {
+    return response.json();
+  }).then((json) => {
+    const polku = 'files/';
+    lista.innerHTML = '';
+    json.forEach(item => {
+      const li = document.createElement('li');
+      if (item.p_mimetype.includes('image')) {
+        const kuva = document.createElement('img');
+        kuva.src = polku + item.p_mfile;
+        kuva.setAttribute('class', 'frontkuva');
+        li.appendChild(kuva);
+      }
+      lista.appendChild(li);
+    });
+  });
+};
+
+lomake.addEventListener('submit', lahetaLomake);}catch (e) {
+
+}
+
 
 function move() {
   const fragment = document.createDocumentFragment();
   fragment.appendChild(document.getElementById('sivu'));
   document.getElementById('sivuM').appendChild(fragment);
 }
+
 function moveBack() {
 
   const fragment = document.createDocumentFragment();
   fragment.appendChild(document.getElementById('sivu'));
   document.getElementById('alku').appendChild(fragment);
 }
+
 function mobileFontS() {
 
   document.getElementById('topnav').style.fontSize = 'small';
@@ -80,10 +142,11 @@ function resize() {
 
   if (width < height) {
     mobileFontS();
+    document.querySelector('.divider').style.display = 'none';
 
   } else {
     mobileFontL();
-    console.log('moiikkka2');
+    document.querySelector('.divider').style.display = 'block';
     if (document.querySelector('#new')) {
       replaceNew.parentNode.removeChild(replaceNew);
       let replaceContent = document.createElement('li');
@@ -91,9 +154,9 @@ function resize() {
       replaceContent.setAttribute('class', 'dropdown');
       replaceContent.innerHTML =
           '<a class="hoverOver" href="portfolio.html">PORTFOLIO</a>\n' +
-          '<a class="dropdown-content" href="portfolio.html">MUSIC</a>\n' +
-          '<a class="dropdown-content" href="portfolio.html">PHOTOS</a>\n' +
-          '<a class="dropdown-content" href="portfolio.html">GENERAL</a>';
+          '<a class="dropdown-content" href="portfolio.html#music">MUSIC</a>\n' +
+          '<a class="dropdown-content" href="portfolio.html#photos">PHOTOS</a>\n' +
+          '<a class="dropdown-content" href="portfolio.html#general">GENERAL</a>';
       document.getElementById('topnav').appendChild(replaceContent);
     }
   }
@@ -104,10 +167,14 @@ function resize() {
     let replaceContent = document.createElement('li');
     replaceContent.setAttribute('id', 'new');
     replaceContent.innerHTML =
-        '<a id="clicker" class="hoverOver" style="cursor: pointer; display: block">PORTFOLIO</a>\n' +
-        '<a id="dropdownCont" class="dropdown-content" href="portfolio.html">MUSIC</a>\n' +
-        '<a id="dropdownCont" class="dropdown-content" href="portfolio.html">PHOTOS</a>\n' +
-        '<a id="dropdownCont" class="dropdown-content" href="portfolio.html">GENERAL</a>';
+        '<a id="clicker" class="hoverOver" style="cursor: pointer; display: block">' +
+        'PORTFOLIO</a>\n' +
+        '<a id="dropdownCont" class="dropdown-content2" href="portfolio.html#music">' +
+        'MUSIC</a>\n' +
+        '<a id="dropdownCont" class="dropdown-content2" href="portfolio.html#photos">' +
+        'PHOTOS</a>\n' +
+        '<a id="dropdownCont" class="dropdown-content2" href="portfolio.html#general">' +
+        'GENERAL</a>';
     document.getElementById('topnav').appendChild(replaceContent);
     document.getElementById('clicker').addEventListener('click', function() {
       event.preventDefault();
@@ -119,7 +186,9 @@ function resize() {
     document.addEventListener('click', function(event) {
       let isClickInside = specifiedElement.contains(event.target);
       if (isClickInside) {
-        console.log('inside');
+        document.querySelectorAll('#dropdownCont')[0].style.display = 'block';
+        document.querySelectorAll('#dropdownCont')[1].style.display = 'block';
+        document.querySelectorAll('#dropdownCont')[2].style.display = 'block';
       } else {
         document.querySelectorAll('#dropdownCont')[0].style.display = 'none';
         document.querySelectorAll('#dropdownCont')[1].style.display = 'none';
@@ -140,7 +209,6 @@ function resize2() {
 
   } else {
     mobileFontL2();
-    console.log('moiikkka2');
     if (document.querySelector('#new')) {
       replaceNew.parentNode.removeChild(replaceNew);
       let replaceContent = document.createElement('li');
@@ -148,9 +216,9 @@ function resize2() {
       replaceContent.setAttribute('class', 'dropdown');
       replaceContent.innerHTML =
           '<a class="hoverOver" href="portfolio.html">PORTFOLIO</a>\n' +
-          '<a class="dropdown-content" href="portfolio.html">MUSIC</a>\n' +
-          '<a class="dropdown-content" href="portfolio.html">PHOTOS</a>\n' +
-          '<a class="dropdown-content" href="portfolio.html">GENERAL</a>';
+          '<a class="dropdown-content" href="portfolio.html#music">MUSIC</a>\n' +
+          '<a class="dropdown-content" href="portfolio.html#photos">PHOTOS</a>\n' +
+          '<a class="dropdown-content" href="portfolio.html#general">GENERAL</a>';
       document.getElementById('topnav').appendChild(replaceContent);
     }
   }
@@ -162,21 +230,24 @@ function resize2() {
     replaceContent.setAttribute('id', 'new');
     replaceContent.innerHTML =
         '<a id="clicker" class="hoverOver" style="cursor: pointer; display: block">PORTFOLIO</a>\n' +
-        '<a id="dropdownCont" class="dropdown-content" href="portfolio.html">MUSIC</a>\n' +
-        '<a id="dropdownCont" class="dropdown-content" href="portfolio.html">PHOTOS</a>\n' +
-        '<a id="dropdownCont" class="dropdown-content" href="portfolio.html">GENERAL</a>';
+        '<a id="dropdownCont" class="dropdown-content2" href="portfolio.html#music">MUSIC</a>\n' +
+        '<a id="dropdownCont" class="dropdown-content2" href="portfolio.html#photos">PHOTOS</a>\n' +
+        '<a id="dropdownCont" class="dropdown-content2" href="portfolio.html#general">GENERAL</a>';
     document.getElementById('topnav').appendChild(replaceContent);
     document.getElementById('clicker').addEventListener('click', function() {
       event.preventDefault();
       document.querySelectorAll('#dropdownCont')[0].style.display = 'block';
       document.querySelectorAll('#dropdownCont')[1].style.display = 'block';
       document.querySelectorAll('#dropdownCont')[2].style.display = 'block';
+      console.log('portfolio');
     });
     let specifiedElement = document.getElementById('clicker');
     document.addEventListener('click', function(event) {
       let isClickInside = specifiedElement.contains(event.target);
       if (isClickInside) {
-        console.log('inside');
+        document.querySelectorAll('#dropdownCont')[0].style.display = 'block';
+        document.querySelectorAll('#dropdownCont')[1].style.display = 'block';
+        document.querySelectorAll('#dropdownCont')[2].style.display = 'block';
       } else {
         document.querySelectorAll('#dropdownCont')[0].style.display = 'none';
         document.querySelectorAll('#dropdownCont')[1].style.display = 'none';
@@ -186,86 +257,4 @@ function resize2() {
   }
 }
 
-
-const fillUpdate = (image) => {
-  console.log(image);
-  document.querySelector('#updateform input[name=mID]').value = image.mID;
-  document.querySelector('#updateform input[name=category]').value = image.category;
-  document.querySelector('#updateform input[name=title]').value = image.title;
-  document.querySelector('#updateform input[name=details]').value = image.details;
-  document.querySelector('#updateform button').removeAttribute('disabled');
-};
-
-const getImages = () => {
-  fetch('/images').then((response) => {
-    return response.json();
-  }).then((json) => {
-    console.log(json);
-    // clear list before adding upated data
-    list.innerHTML = '';
-    json.forEach((image) => {
-      const li = document.createElement('li');
-      const title = document.createElement('h3');
-      title.innerHTML = image.title;
-      li.appendChild(title);
-      const img = document.createElement('img');
-      img.src = 'thumbs/' + image.thumbnail;
-      img.addEventListener('click', () => {
-        fillUpdate(image);
-      });
-      li.appendChild(img);
-      list.appendChild(li);
-    });
-  });
-};
-
-const sendForm = (evt) => {
-  evt.preventDefault();
-  const fd = new FormData(frm);
-  const settings = {
-    method: 'post',
-    body: fd,
-  };
-
-  fetch('/upload', settings).then((response) => {
-    return response.json();
-  }).then((json) => {
-    console.log(json);
-    // update list
-    getImages();
-  });
-};
-
-const sendUpdate = (evt) => {
-  evt.preventDefault();
-  // get data from updatefrm and put it to body
-  const data = JSON.stringify([
-    updatefrm.querySelector('input[name="category"]').value,
-    updatefrm.querySelector('input[name="title"]').value,
-    updatefrm.querySelector('input[name="details"]').value,
-    updatefrm.querySelector('input[name="mID"]').value,
-  ]);
-  const settings = {
-    method: 'PATCH',
-    body: data,
-    headers: {
-      'Content-Type': 'application/json; charset=utf-8',
-    },
-  };
-  // app.patch('/images'.... needs to be implemented to index.js (remember body-parser)
-  fetch('/images', settings).then((response) => {
-    return response.json();
-  }).then((json) => {
-    console.log(json);
-    updatefrm.reset();
-    document.querySelector('#updateform button').setAttribute('disabled', 'disabled');
-    // update list
-    getImages();
-  });
-};
-
-frm.addEventListener('submit', sendForm);
-updatefrm.addEventListener('submit', sendUpdate);
-
 getImages();
-

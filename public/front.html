@@ -1,62 +1,61 @@
-<!doctype html>
-<html class="no-js" lang="">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="stylesheet" href="modules/leaflet/dist/leaflet.css"/>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foreign Mechanics</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<body>
-<!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-    your browser</a> to improve your experience.</p>
-<![endif]-->
-<nav id="nav">
+<body onload="resize()" onresize="resize()">
+<nav id="nav" class="effect3">
     <nav>
         <ul id="topnav" class="topnav">
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="#contact">CONTACT</a></li>
-            <li><a href="portfolio.html">PORTFOLIO</a></li>
+            <li><a class="hoverOver" href="index.html">HOME</a></li>
+            <li><a class="hoverOver" href="#contact">CONTACT</a></li>
+            <li id="drop" class="dropdown">
+                <a class="hoverOver" href="portfolio.html">PORTFOLIO</a>
+                <a class="dropdown-content" href="portfolio.html">MUSIC</a>
+                <a class="dropdown-content" href="portfolio.html">PHOTOS</a>
+                <a class="dropdown-content" href="portfolio.html">GENERAL</a>
+            </li>
         </ul>
     </nav>
     <nav>
         <ul>
             <li id="some">
-                <a href="https://www.instagram.com/ophietto/">
-                    <img class="someClass" src="css/Insta.png" alt="Instagram"></a>
+                <a class="hoverOver" href="https://www.instagram.com/ophietto/">
+                    <img class="someClass effect4" src="css/Insta.png" alt="Instagram"></a>
 
-                <a href="https://soundcloud.com/ophsonics">
-                    <img class="someClass" src="css/Soundcloud.png" alt="SoundCloud"></a>
+                <a class="hoverOver" href="https://soundcloud.com/ophsonics">
+                    <img class="someClass effect4" src="css/Soundcloud.png" alt="SoundCloud"></a>
             </li>
         </ul>
     </nav>
 
 </nav>
-<!-- Add your site or application content here -->
-<div style="text-align: center">
-    <h3>JEE</h3>
-    <p>asdkfkafkaasdkfkafkaasdkfkafkaasdkfkafkaasdkfkafkaasdkfkafkaasdkfkafka
-        asdkfkafkaasdkfkafkaasdkfkafka
-        asdkfkafkaasdkfkafkaasdkfkafka
-        asdkfkafkaasdkfkafkaasdkfkafka
-        asdkfkafkaasdkfkafkaasdkfkafka
-        asdkfkafkaasdkfkafkaasdkfkafka
-        asdkfkafkaasdkfkafkaasdkfkafka</p>
+<div style="height: 7rem">
 
 </div>
 
-<script src="modules/moment/moment.js"></script>
-<script src="modules/leaflet/dist/leaflet.js"></script>
-<script src="js/main.js"></script>
+<div style="text-align: center">
+    <form action="/upload" method="post" enctype="multipart/form-data" id="lomake">
+        <label for="file" id="otsikko" >CHOOSE A FILE FOR PROFILE
+        <input type="file" name="kuva" id="file" accept="audio/*,video/*,image/*">
+     </label>
+        <br>
+        <br>
+        <button class="button" style="" type="submit" id="submit">SEND</button>
+        <button class="button" style="" type="submit" id="submitp">SEND TO PROFILE PICTURE</button>
+    </form>
+    <br>
+    <div>
+        <ul id="result">
 
+        </ul>
+    </div>
+</div>
+
+<script src="js/main.js"></script>
 
 </body>
 </html>

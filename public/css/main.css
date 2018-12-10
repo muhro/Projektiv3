@@ -2,19 +2,14 @@
     display: none;
 }
 body{
-    background-color: black;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
+    background: rgba(0, 0, 0, 0.85) no-repeat fixed center;
     max-height: 100%;
     font-family: Numans-Regular;
     margin: 0; !important;
 
 }
 .port{
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
+    background: no-repeat fixed center;
 
 }
 audio {
@@ -37,7 +32,6 @@ h3{
 .tausta{
     background: rgba(0, 0, 0, 0.0);
     z-index: 1;
-    border-radius: 12px;
 
 }
 
@@ -51,6 +45,13 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+#otsikko{
+    font-family: Anton;
+    font-weight: lighter;
+    font-size: 2rem;
+    color: white;
+
 }
 
 li {
@@ -97,6 +98,17 @@ li a{
 .column{
     float: right;
 }
+.flex{
+    display: flex;
+}
+.divider {
+    content: "";
+    background-color: white;
+    display: block;
+    width: 2px;
+    height: 80%;
+    margin: auto auto;
+}
 .column.side {
     width: 100%;
     color: #f1f1f1;
@@ -105,6 +117,7 @@ li a{
 
 .column.middle {
     width: 40%;
+    margin: 2rem;
 }
 .row:after {
     content: "";
@@ -119,8 +132,8 @@ li a{
 }
 #wrapper{
     text-align: center;
-
 }
+
 .wrapper{
     display: flex;
     flex-wrap: wrap;
@@ -171,7 +184,7 @@ h2{
     margin-top: -37px;
     margin-left: -285px;
     font-size: 400%;
-    z-index: 100;
+    z-index: 10;
 }
 
 .dropdown {
@@ -179,24 +192,85 @@ h2{
     color: white;
     float: left;
     z-index: 100;
-
 }
 
 .dropdown-content {
     display: none;
-    background-color: rgba(0,0,0,0);
     color: white;
     z-index: 100;
+}
+.dropdown-content2 {
+    display: none;
+    color: white;
+    z-index: 100;
+    -webkit-animation: slide-down 0.2s ease-out;
 }
 
 .dropdown:hover .dropdown-content {
     display: inline-block;
+    -webkit-animation: slide-right 0.2s ease-out;
 }
 
 .dropdown-content:hover{
-    background-color: rgba(255,255,255,0.3);
+    text-shadow: 0 0 15px rgba(255,255,255,1);
+}
+.dropdown-content2:hover{
+    text-shadow: 0 0 15px rgba(255,255,255,1);
 }
 
 .hoverOver:hover{
-    background-color: rgba(255,255,255,0.3);
+    text-shadow: 0 0 15px rgba(255,255,255,1);
+}
+
+.hoverOverSome:hover{
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(1px 0px 10px rgba(255,255,255,1));
+}
+.effect1{
+    box-shadow:
+            0 10px 25px rgba(0,0,0,.5);
+}
+.effect2{
+    text-shadow:
+            0 10px 10px rgba(0,0,0,1);
+
+}
+.effect3{
+    text-shadow: 0 10px 10px rgba(0, 0, 0, .5);
+
+}
+.effect4{
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(0px 10px 5px rgba(0,0,0,.5));
+}
+@-webkit-keyframes slide-right {
+    0% { opacity: 0; -webkit-transform: translateX(-100%); }
+    100% { opacity: 1; -webkit-transform: translateX(0); }
+}
+@-webkit-keyframes slide-down {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
+}
+.frontkuva{
+    max-width: 16rem;
+}
+.button{
+    background-color: #111111;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 16px;
+    font-size: 16px;
+}
+input[type="file"] {
+    display: none;
 }

@@ -15,7 +15,7 @@ const connect = () => {
 const select = (connection, callback, res) => {
   // simple query
   connection.query(
-      'SELECT * FROM projekti',
+      'SELECT * FROM projekti;',
       (err, results, fields) => {
         // console.log(results); // results contains rows returned by server
         // console.log(fields); // fields contains extra meta data about results, if available
@@ -28,10 +28,10 @@ const select = (connection, callback, res) => {
 const insert = (data, connection, callback) => {
   // simple query
   connection.execute(
-      'INSERT INTO projekti (p_mfile, p_mimetype, p_username, p_passu VALUES (?, ?, ?, ?);',
+      'INSERT INTO projekti (p_mfile, p_mimetype, p_mthumb) VALUES (?, ?, ?);',
       data,
       (err, results, fields) => {
-        // console.log(results); // results contains rows returned by server
+         //console.log(results); // results contains rows returned by server
         // console.log(fields); // fields contains extra meta data about results, if available
         console.log(err);
         callback();
@@ -42,7 +42,7 @@ const insert = (data, connection, callback) => {
 const login = (data, connection, callback) => {
   // simple query
   connection.execute(
-      'SELECT * FROM projekti Where p_username = ? AND p_passu = ?;',
+      'SELECT * FROM userit Where p_username = ? AND p_passu = ?;',
       data,
       (err, results, fields) => {
         console.log(results); // results contains rows returned by server
