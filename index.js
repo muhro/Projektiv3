@@ -78,6 +78,12 @@ app.use('/upload', (req, res, next) => {
     next();
   });
 });
+app.use('/upload', (req, res, next) => {
+  resize.resizeImage(req.file.path, 150, './public/prof/' +
+      req.file.filename + '_prof').then(() => {
+    next();
+  });
+});
 
 // tallenna tiedot tietokantaan
 app.use('/upload', (req, res, next) => {
@@ -86,6 +92,7 @@ app.use('/upload', (req, res, next) => {
     req.file.filename,
     req.file.mimetype,
     req.file.filename + '_thumb',
+    req.file.filename + '_prof',
   ];
   insertToDB(data, res, next);
 });
@@ -94,6 +101,7 @@ app.use('/upload', (req, res, next) => {
 // hae päivitetyt tiedot tietokannasta
 app.use('/upload', (req, res, next) => {
   selectAll(req, next);
+  selectOne(req, next);
 });
 
 
@@ -108,6 +116,8 @@ app.use('/upload', (req, res) => {
 app.get('/images', (req, res) => {
   db.select(connection, cb, res);
 });
+
+
 
 app.patch('/images', (req, res) => {
   console.log('body', req.body);
@@ -191,6 +201,22 @@ app.post('/login', function(req, res, next) {
   })(req, res, next);
 });
 
-
+app.get('/profiili', (req, res) =>{
+  db.profiili(connection,(result)=>{
+    const kuvat  = result.map((image)=>{
+      return image.p_ID
+    });
+    console.log('kuvat', kuvat);
+    let moi = result.slice(-1)[0];
+    res.send([moi]);
+    console.log('kuvat', kuvat, result);
+  });
+});
 
 app.listen(8000);
+/*
+const index = kuvat[0];
+    const vika = kuvat.slice(-1)[0];
+    res.send(result[vika]);
+    console.log(index, vika)
+*/

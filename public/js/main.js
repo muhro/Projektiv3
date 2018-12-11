@@ -3,8 +3,13 @@
 const yourAudio = document.querySelector('#audio');
 const ctrl = document.getElementById('audioControl');
 const lomake = document.querySelector('#lomake');
+const lomake2 = document.querySelector('#lomake2');
 const lista = document.querySelector('#result');
 const lista2 = document.querySelector('#result2');
+let musiikki = document.querySelector('#music');
+let valokuvat = document.querySelector('#photos');
+let geneerinen = document.querySelector('#general');
+let sisalto = document.querySelector('#content');
 
 try {
   const musa = document.querySelector('#audioControl');
@@ -16,6 +21,8 @@ try {
 
 }
 
+
+
 function audio() {
   const pause = ctrl.innerHTML === 'pause';
   ctrl.innerHTML = pause ? 'play' : 'pause';
@@ -25,6 +32,28 @@ function audio() {
   return false;
 };
 
+const kuvaprofiiliin = () => {
+  fetch('/profiili').then((response) => {
+    return response.json();
+  }).then((json) => {
+    console.log(json);
+    // clear list before adding upated data
+    lista2.innerHTML = '';
+    json.forEach((profiilikuva) => {
+      const li = document.createElement('li');
+      const img = document.createElement('img');
+
+      li.classList.add('list');
+      img.classList.add('kuva', 'effect1');
+      img.src = 'prof/' + profiilikuva.p_mprof;
+      img.addEventListener('click', () => {
+        fillUpdate(profiilikuva);
+      });
+      li.appendChild(img);
+      lista2.appendChild(li);
+    });
+  });
+};
 const getImages = () => {
   fetch('/images').then((response) => {
     return response.json();
@@ -58,7 +87,7 @@ const lahetaLomake = (evt) => {
     return response.json();
   }).then((json) => {
     const polku = 'files/';
-    lista.innerHTML = '';
+    lista2.innerHTML = '';
     json.forEach(item => {
       const li = document.createElement('li');
       if (item.p_mimetype.includes('image')) {
@@ -67,14 +96,16 @@ const lahetaLomake = (evt) => {
         kuva.setAttribute('class', 'frontkuva');
         li.appendChild(kuva);
       }
-      lista.appendChild(li);
+      lista2.appendChild(li);
     });
   });
 };
 
 lomake.addEventListener('submit', lahetaLomake);}catch (e) {
-
 }
+
+
+
 
 
 function move() {
@@ -139,6 +170,11 @@ function resize() {
   let height = window.outerHeight;
   let replace = document.querySelector('.dropdown');
   let replaceNew = document.querySelector('#new');
+
+
+
+
+
 
   if (width < height) {
     mobileFontS();
@@ -256,5 +292,27 @@ function resize2() {
     });
   }
 }
+function includes() {
+  if (window.location.href.indexOf('music') > -1) {
+    musiikki.setAttribute('class', 'show');
+    valokuvat.setAttribute('class', 'hidden');
+    geneerinen.setAttribute('class', 'hidden');
+    sisalto.setAttribute('class', 'hidden');
+
+  } else if (window.location.href.indexOf('photos') > -1) {
+    valokuvat.setAttribute('class', 'show');
+    musiikki.setAttribute('class', 'hidden');
+    geneerinen.setAttribute('class', 'hidden');
+    sisalto.setAttribute('class', 'hidden');
+  } else if (window.location.href.indexOf('general') > -1) {
+    geneerinen.setAttribute('class', 'show');
+    valokuvat.setAttribute('class', 'hidden');
+    musiikki.setAttribute('class', 'hidden');
+    sisalto.setAttribute('class', 'hidden');
+  }
+}
+
+window.addEventListener('hashchange', includes, false);
 
 getImages();
+kuvaprofiiliin();

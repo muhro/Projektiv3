@@ -28,7 +28,7 @@ const select = (connection, callback, res) => {
 const insert = (data, connection, callback) => {
   // simple query
   connection.execute(
-      'INSERT INTO projekti (p_mfile, p_mimetype, p_mthumb) VALUES (?, ?, ?);',
+      'INSERT INTO projekti (p_mfile, p_mimetype, p_mthumb, p_mprof) VALUES (?, ?, ?, ?);',
       data,
       (err, results, fields) => {
          //console.log(results); // results contains rows returned by server
@@ -38,6 +38,7 @@ const insert = (data, connection, callback) => {
       },
   );
 };
+
 
 const login = (data, connection, callback) => {
   // simple query
@@ -52,9 +53,22 @@ const login = (data, connection, callback) => {
       },
   );
 };
+const profiili = (connection, callback) => {
+  // simple query
+  connection.execute(
+      'SELECT * FROM projekti',
+      (err, results, fields) => {
+        console.log(results); // results contains rows returned by server
+        // console.log(fields); // fields contains extra meta data about results, if available
+        console.log(err);
+        callback(results);
+      },
+  );
+};
 
 module.exports = {
   connect: connect,
+  profiili: profiili,
   select: select,
   insert: insert,
   login: login,

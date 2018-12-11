@@ -6,7 +6,6 @@ body{
     max-height: 100%;
     font-family: Numans-Regular;
     margin: 0; !important;
-
 }
 .port{
     background: no-repeat fixed center;
@@ -39,6 +38,11 @@ h3{
 .kuva{
     max-height: 10rem;
     border-radius: 80px;
+    margin: 20px 0px;
+
+}
+.list{
+    list-style:none;
 }
 
 ul {
@@ -225,6 +229,12 @@ h2{
 .hoverOverSome:hover{
     -webkit-filter: drop-shadow(5px 5px 5px #222);
     filter: drop-shadow(1px 0px 10px rgba(255,255,255,1));
+}
+.hidden{
+    display: none;
+}
+.show{
+    display: block;
 }
 .effect1{
     box-shadow:
