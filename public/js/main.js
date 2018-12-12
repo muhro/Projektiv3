@@ -54,6 +54,7 @@ const kuvaprofiiliin = () => {
     });
   });
 };
+
 const getImages = () => {
   fetch('/images').then((response) => {
     return response.json();
@@ -62,17 +63,11 @@ const getImages = () => {
     // clear list before adding upated data
     lista.innerHTML = '';
     json.forEach((image) => {
-      const li = document.createElement('li');
-      const img = document.createElement('img');
-      img.src = 'thumbs/' + image.p_mthumb;
-      img.addEventListener('click', () => {
-        fillUpdate(image);
-      });
-      li.appendChild(img);
-      lista.appendChild(li);
+
     });
   });
 };
+
 try{
 const lahetaLomake = (evt) => {
   evt.preventDefault();
@@ -298,17 +293,21 @@ function includes() {
     valokuvat.setAttribute('class', 'hidden');
     geneerinen.setAttribute('class', 'hidden');
     sisalto.setAttribute('class', 'hidden');
+    document.getElementById('music').scrollIntoView();
 
   } else if (window.location.href.indexOf('photos') > -1) {
     valokuvat.setAttribute('class', 'show');
     musiikki.setAttribute('class', 'hidden');
     geneerinen.setAttribute('class', 'hidden');
     sisalto.setAttribute('class', 'hidden');
+    document.getElementById('photos').scrollIntoView();
+
   } else if (window.location.href.indexOf('general') > -1) {
     geneerinen.setAttribute('class', 'show');
     valokuvat.setAttribute('class', 'hidden');
     musiikki.setAttribute('class', 'hidden');
     sisalto.setAttribute('class', 'hidden');
+    document.getElementById('general').scrollIntoView();
   }
 }
 

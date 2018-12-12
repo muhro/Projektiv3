@@ -57,6 +57,12 @@ ul {
     color: white;
 
 }
+.otsikko{
+    font-family: Anton;
+    font-weight: lighter;
+    font-size: 2rem;
+    color: white;
+}
 
 li {
     float: left;
